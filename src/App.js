@@ -16,7 +16,11 @@ class App extends Component {
   }
 
   handleClick(index) {
-    console.log(index);
+    this.state.board[index] = this.state.currentTurn
+    this.setState({
+      board: this.state.board,
+      currentTurn: this.state.currentTurn === this.state.PLAYER_ONE_SYMBOL ? this.state.PLAYER_TWO_SYMBOL : this.state.PLAYER_ONE_SYMBOL
+    })
   }
 
   render() {
