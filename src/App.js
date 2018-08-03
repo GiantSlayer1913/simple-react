@@ -9,18 +9,21 @@ class App extends Component {
       PLAYER_ONE_SYMBOL: "X",
       PLAYER_TWO_SYMBOL: "O",
       currentTurn: "X",
-      board : [
+      board: [
         "", "", "", "", "", "", "", "", ""
       ]
     }
   }
 
+  handleClick(index) {
+    console.log(index);
+  }
 
   render() {
     return (
       <div className="board">
-      {this.state.board.map((cell) => {
-        return <div className="square">{cell}</div>;
+      {this.state.board.map((cell, index) => {
+        return <div onClick={() => this.handleClick(index)} className="square">{cell}</div>;
       })}
       </div>
     )
