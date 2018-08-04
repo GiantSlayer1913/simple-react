@@ -46,14 +46,12 @@ class App extends Component {
           <h1 className="App-title">Tic Tac Toe</h1>
           <p className="App-intro">Please register or login using the forms below...</p>
           {this.state.winner ? <h2>{`The winner is ${this.state.winner}`}</h2> : null}
-          <div className="center-simple">
             <div className="board">
             {this.state.board.map((cell, index) => {
               return <div onClick={() => this.handleClick(index)} className="square">{cell}</div>;
             })}
             </div>
-          </div>
-        </div>
+            </div>
     )
   }
 }

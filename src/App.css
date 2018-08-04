@@ -35,11 +35,10 @@
   height: 600px;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-
+  justify-content: flex-start;
 }
 
-.center-simple {
+.App-container {
   text-align: center;
 }
 
