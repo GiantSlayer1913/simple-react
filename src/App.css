@@ -30,7 +30,7 @@
 }
 
 .board {
-  display: flex;
+  display: inline-flex;
   width: 600px;
   height: 600px;
   flex-direction: row;
