@@ -6,6 +6,22 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      login: {
+        signUp: {
+          username: "",
+          email: "",
+          password: "",
+          passwordConfirmation: ""
+        },
+        signIn: {
+          username: "",
+          password: "",
+          token: ""
+        },
+        signOut: {
+          token: ""
+        }
+      },
       PLAYER_ONE_SYMBOL: "X",
       PLAYER_TWO_SYMBOL: "O",
       currentTurn: "X",
@@ -28,9 +44,9 @@ class App extends Component {
   }
 
   checkForWinner() {
-    var currentTurn = this.state.currentTurn
-    var symbols = this.state.board
-    var winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    let currentTurn = this.state.currentTurn
+    let symbols = this.state.board
+    let winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     return winningCombos.find(function(combo) {
       if(symbols[combo[0]] !=="" && symbols[combo[1]] !=="" && symbols[combo[2]] !== ""  && symbols[combo[0]] === symbols[combo[1]] && symbols[combo[1]] === symbols[combo[2]]) {
         return currentTurn
@@ -45,11 +61,15 @@ class App extends Component {
       <div className="App-container">
           <h1 className="App-title">Tic Tac Toe</h1>
           <p className="App-intro">Please register or login using the forms below...</p>
+          // {this.state.game ? <h2>{`Game: ${this.state.game}`}</h2> : null}
           {this.state.winner ? <h2>{`The winner is ${this.state.winner}`}</h2> : null}
             <div className="board">
             {this.state.board.map((cell, index) => {
               return <div onClick={() => this.handleClick(index)} className="square">{cell}</div>;
             })}
+            </div>
+            <div>
+            <button className="btn-primary">New Game</button>
             </div>
             </div>
     )

@@ -29,6 +29,10 @@
   to { transform: rotate(360deg); }
 }
 
+.App-container {
+  text-align: center;
+}
+
 .board {
   display: inline-flex;
   width: 600px;
@@ -38,8 +42,20 @@
   justify-content: flex-start;
 }
 
-.App-container {
+.btn-primary {
+  border: 1px solid black;
+  display: inline-block;
+  font-size: 1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 1rem;
   text-align: center;
+}
+
+.btn-primary:hover {
+  cursor: pointer;
+  background-color: #a9a1a1;
 }
 
 .square {
