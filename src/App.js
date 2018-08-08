@@ -32,6 +32,15 @@ class App extends Component {
     }
   }
 
+signUp() {
+  return (
+    this.state.login.signUp.email.indexOf(`@`) &&
+    this.state.login.signUp.password === this.state.login.signUp.passwordConfirmation &&
+    this.state.login.signUp.password.length > 8 &&
+    this.state.login.signUp.passwordConfirmation.length > 8
+  )
+}
+
   handleClick(index) {
     if (this.state.board[index] === "") {
       this.state.board[index] = this.state.currentTurn
@@ -44,9 +53,9 @@ class App extends Component {
   }
 
   checkForWinner() {
-    let currentTurn = this.state.currentTurn
-    let symbols = this.state.board
-    let winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+    var currentTurn = this.state.currentTurn
+    var symbols = this.state.board
+    var winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     return winningCombos.find(function(combo) {
       if(symbols[combo[0]] !=="" && symbols[combo[1]] !=="" && symbols[combo[2]] !== ""  && symbols[combo[0]] === symbols[combo[1]] && symbols[combo[1]] === symbols[combo[2]]) {
         return currentTurn
@@ -56,12 +65,22 @@ class App extends Component {
     })
   }
 
+  newGame() {
+  if (this.state.winner !== null) {
+    this.state.boad.setState({
+      board = ""
+    })
+  } else {
+    return false
+  }
+  }
+}
+
   render() {
     return (
       <div className="App-container">
           <h1 className="App-title">Tic Tac Toe</h1>
           <p className="App-intro">Please register or login using the forms below...</p>
-          // {this.state.game ? <h2>{`Game: ${this.state.game}`}</h2> : null}
           {this.state.winner ? <h2>{`The winner is ${this.state.winner}`}</h2> : null}
             <div className="board">
             {this.state.board.map((cell, index) => {
@@ -70,6 +89,7 @@ class App extends Component {
             </div>
             <div>
             <button className="btn-primary">New Game</button>
+            {this.newGame ? <h3>{`Sorry, you must finish the game before playing a new one.`}</h3> : null}
             </div>
             </div>
     )
