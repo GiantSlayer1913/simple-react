@@ -1,27 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
+import './login.js';
 
 class App extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      login: {
-        signUp: {
-          username: "",
-          email: "",
-          password: "",
-          passwordConfirmation: ""
-        },
-        signIn: {
-          username: "",
-          password: "",
-          token: ""
-        },
-        signOut: {
-          token: ""
-        }
-      },
       PLAYER_ONE_SYMBOL: "X",
       PLAYER_TWO_SYMBOL: "O",
       currentTurn: "X",
@@ -32,14 +17,14 @@ class App extends Component {
     }
   }
 
-signUp() {
-  return (
-    this.state.login.signUp.email.indexOf(`@`) &&
-    this.state.login.signUp.password === this.state.login.signUp.passwordConfirmation &&
-    this.state.login.signUp.password.length > 8 &&
-    this.state.login.signUp.passwordConfirmation.length > 8
-  )
-}
+// signUp() {
+//   return (
+//     this.state.login.signUp.email.indexOf(`@`) &&
+//     this.state.login.signUp.password === this.state.login.signUp.passwordConfirmation &&
+//     this.state.login.signUp.password.length > 8 &&
+//     this.state.login.signUp.passwordConfirmation.length > 8
+//   )
+// }
 
   handleClick(index) {
     if (this.state.board[index] === "") {
@@ -65,22 +50,22 @@ signUp() {
     })
   }
 
-  newGame() {
-  if (this.state.winner !== null) {
-    this.state.boad.setState({
-      board = ""
-    })
-  } else {
-    return false
-  }
-  }
-}
+  // newGame() {
+  // if (this.state.winner !== null) {
+  //   this.state.board.setState({
+  //     board = ""
+  //   })
+  // } else {
+  //   return false
+  // }
+  // }
 
   render() {
     return (
       <div className="App-container">
           <h1 className="App-title">Tic Tac Toe</h1>
-          <p className="App-intro">Please register or login using the forms below...</p>
+          <form className="Login">Login</form>
+
           {this.state.winner ? <h2>{`The winner is ${this.state.winner}`}</h2> : null}
             <div className="board">
             {this.state.board.map((cell, index) => {
