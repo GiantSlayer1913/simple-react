@@ -73,3 +73,7 @@
   cursor: pointer;
   background-color: #80cd92;
 }
+
+label {
+  color: 2px solid black;
+}
